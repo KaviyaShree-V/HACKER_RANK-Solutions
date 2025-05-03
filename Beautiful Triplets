@@ -24,17 +24,6 @@ class Result {
     public static int beautifulTriplets(int d, List<Integer> arr) {
     // Write your code here
     int result=0;
-    // for(int i=0;i<arr.size()-d;i++){
-    //     int h=0;
-    //     int[] find =  new int[d];
-    //     for(int j=0; j<d ; j++){
-    //         if(arr.get(i)-arr.get(j)==d){
-    //             for(int k=0;k<arr.size();k++)
-    //         find[j]= find[i+j];
-    //         h+=find[j];
-    //     }
-    //     }
-    // }
      for(int i=0;i<arr.size();i++){
          int sum = d+arr.get(i);
          if(arr.contains(sum)){
