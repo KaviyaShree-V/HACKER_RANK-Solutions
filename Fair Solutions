@@ -1,0 +1,31 @@
+String s = " ";
+    int k = 0;
+
+    if (B.size() <= 2) {
+        return "NO";
+    }
+
+    if (B.size() > 3) {
+        for (int i = 0; i < B.size(); i++) {
+            if (B.get(i) % 2 == 0) {
+                continue;
+            }
+            int p1=B.size(),p2=B.indexOf(B.get(i+1));
+            int j = B.get(i) + 1;
+            B.set(i, j);
+            if(p1==p2){
+                s="NO";
+                break;
+            }else{
+            int h= B.get(i+1)+1;
+            B.set(i+1, h);
+            System.out.println("i " + i + " j " + j);
+            k+=2;
+            System.out.println("k " + k);
+        }
+        }
+        s = String.valueOf(k); 
+    }
+
+    return s;
+}
