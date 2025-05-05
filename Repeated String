@@ -23,41 +23,6 @@ class Result {
 
     public static long repeatedString(String s, long n) {
     // Write your code here
-    // int y=(int)n,l=0;
-    // List<Character> list = new ArrayList<>();
-    // List<Character> aList = new ArrayList<>();
-    // for(char c:s.toCharArray()){
-    //     list.add(c);
-    // }
-    // int index = 0;
-    // while (aList.size() < n) {
-    //     aList.add(list.get(index));
-    //     index++;
-    //     if (index == list.size()) {
-    //         index = 0;
-    //         }
-    // }
-    // // char c = aList.get(y - 1);
-    // // System.out.println(c);
-    // for (char ch : aList) {
-    // if (ch == aList.get(y - 1)) {
-    //     l++;
-    // }
-    // }
-    // return l;
-    // if (!s.contains("a")) return 0;
-    // long count = 0;
-    // int i = 0;
-    // for (long j = 0; j < n; j++) {
-    //     if (s.charAt(i) == 'a') {
-    //         count++;
-    //     }
-    //     i++;
-    //     if (i == s.length()) {
-    //         i = 0;
-    //     }
-    // }
-    // return count;
      if (!s.contains("a")) return 0;
     long f = n / s.length();
     long r = n % s.length();
