@@ -1,0 +1,91 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the flatlandSpaceStations function below.
+    static int flatlandSpaceStations(int n, int[] c) {
+        // List<Integer> l = new ArrayList<>();
+        // List<Integer> m = new ArrayList<>();
+        // int min=0;
+        // for(char i=0;i<c.length;i++){
+        //     l.add(c[i]);
+        // }
+        // if(n==c.length){
+        //     min=0;
+        // }
+        // for(int i=0;i<n;i++){
+        //     for(int j=i+1;j<n;j++){
+        //         if(l.contains(i)){
+        //             m.add(0);
+        //         }
+        //         if(l.contains(j)){
+        //             m.add(Math.abs(i=c[j]));
+        //             j++;
+        //         }
+        //         System.out.println("i "+i+" j "+j);
+        //     }
+        // }
+        // for(int i:m){
+        //     for(int j=0;j<m.size();j++){
+        //     if(m.get(i)>m.get(j)){
+        //         min=m.get(j);
+        //         System.out.println(min+" >");
+        //     }else{
+        //         min=m.get(i);
+        //         System.out.println(min+" <");
+        //     }
+        //     }
+        // }
+        // return min;
+        int max = 0;
+        for (int i = 0; i < n; ++i) {
+            int min = n;
+            for (int j = 0; j < c.length; ++j) {
+                if (i == c[j]) {
+                    min = 0;
+                    break;
+                }
+                min = Math.min(min, Math.abs(i - c[j]));
+            }
+            max = Math.max(max, min);
+        }
+        return max; 
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String[] nm = scanner.nextLine().split(" ");
+
+        int n = Integer.parseInt(nm[0]);
+
+        int m = Integer.parseInt(nm[1]);
+
+        int[] c = new int[m];
+
+        String[] cItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < m; i++) {
+            int cItem = Integer.parseInt(cItems[i]);
+            c[i] = cItem;
+        }
+
+        int result = flatlandSpaceStations(n, c);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
