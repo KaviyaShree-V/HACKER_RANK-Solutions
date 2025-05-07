@@ -1,0 +1,125 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'appendAndDelete' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts following parameters:
+     *  1. STRING s
+     *  2. STRING t
+     *  3. INTEGER k
+     */
+
+    public static String appendAndDelete(String s, String t, int k) {
+    // Write your code here
+    // String result=" ";
+    // int count=0,p=0;
+    // List<Character> sList = new ArrayList<>();
+    // List<Character> tList = new ArrayList<>();
+    // List<Character> fList = new ArrayList<>();
+    // for(char c: s.toCharArray()){
+    //     sList.add(c);
+    //     System.out.println(sList);
+    // }
+    // for(char ch: t.toCharArray()){
+    //     tList.add(ch);
+    //     System.out.println(tList);
+    // }
+    // int minSize = Math.min(sList.size(), tList.size());
+    // for (int i = 0; i < minSize; i++) {
+    // char c1 = sList.get(i);
+    // char c2 = tList.get(i);
+    // System.out.println(c1 + "  " + c2);
+    
+    // if (c1 == c2) {
+    //     count = 0;
+    //     fList.add(c1);
+    //     System.out.println(fList);
+    // }else {
+    //     break;
+    // }
+    // }
+    // while(p<Math.min(sList.size(), tList.size())&& sList.get(p).equals(tList.get(p))){
+    //     p++;
+    //     System.out.println(p+" p");
+    //     return "YES";
+    // }
+    // if(sList.size()==fList.size() && tList.size()==fList.size()){
+    //     count=(sList.size())+(tList.size())+1;
+    //     System.out.println(count);
+    // }else {
+    //     count=(sList.size()-fList.size())+(tList.size()-fList.size());
+    //     System.out.println(count);
+    // }
+    // if(count==k){
+    //     result = "Yes";
+    // }else{
+    //     result="No";
+    // }
+    // return result;
+    // }
+    int count = 0;
+    List<Character> sList = new ArrayList<>();
+    List<Character> tList = new ArrayList<>();
+    
+    for (char c : s.toCharArray()) {
+        sList.add(c);
+    }
+    for (char c : t.toCharArray()) {
+        tList.add(c);
+    }
+
+    int minSize = Math.min(sList.size(), tList.size()); 
+    for (int i = 0; i < minSize; i++) {
+        if (sList.get(i).equals(tList.get(i))) {
+            count++;
+        } else {
+            break;
+        }
+    }
+
+    int total = (sList.size() - count) + (tList.size() - count);
+
+    if (k >= sList.size() + tList.size()) {
+        return "Yes";
+    } else if (k >= total && (k - total) % 2 == 0) {
+        return "Yes";
+    } else {
+        return "No";
+    }
+}
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = bufferedReader.readLine();
+
+        String t = bufferedReader.readLine();
+
+        int k = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String result = Result.appendAndDelete(s, t, k);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
