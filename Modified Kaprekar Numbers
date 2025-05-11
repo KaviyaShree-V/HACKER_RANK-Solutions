@@ -1,0 +1,65 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'kaprekarNumbers' function below.
+     *
+     * The function accepts following parameters:
+     *  1. INTEGER p
+     *  2. INTEGER q
+     */
+
+    public static void kaprekarNumbers(int p, int q) {
+    // Write your code here
+    List<Long> result = new ArrayList<>();
+    for(long i=p;i<=q;i++){
+        long mul = i*i;
+        String s = String.valueOf(mul);
+        int x = s.length();
+        int split = x/2;
+        String fp1 = s.substring(0, split);
+        String fp2 = s.substring(split);
+        long cfp1 = fp1.isEmpty() ? 0 : Long.parseLong(fp1);
+        long cfp2 = Long.parseLong(fp2);
+        long check = cfp1+cfp2;
+        if(check==i){
+            result.add(i);
+        }
+        // p++;
+    }
+    if (result.isEmpty()) {
+            System.out.println("INVALID RANGE");
+        } else {
+            for (long i : result) {
+                System.out.print(i+" ");
+            }
+        }
+    }
+
+}
+       
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int p = Integer.parseInt(bufferedReader.readLine().trim());
+
+        int q = Integer.parseInt(bufferedReader.readLine().trim());
+
+        Result.kaprekarNumbers(p, q);
+
+        bufferedReader.close();
+    }
+}
